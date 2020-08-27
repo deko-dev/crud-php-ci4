@@ -1,57 +1,81 @@
-# CodeIgniter 4 Framework
+# CRUD con PHP y CodeIgniter 4 Framework
 
-## What is CodeIgniter?
+## Instrucciones de Uso
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible, and secure. 
-More information can be found at the [official site](http://codeigniter.com).
+### NOTA:
 
-This repository holds the distributable version of the framework,
-including the user guide. It has been built from the 
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
-
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
-
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/). 
+> Para poner en funcionamiento este Proyecto se debe tener instalado un servidor Local ( XAMP, LAMP, WAMP ), además se debe tener instalado composer
 
 
-## Important Change with index.php
+### Descargar Proyecto
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+> Para tener el proyecto de forma local en nuestro Ordenador debemos descargarlo en formato .zip o con el comando git clone
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+```
+  > git clone https://github.com/deko-dev/crud-php-ci4.git
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
-The user guide updating and deployment is a bit awkward at the moment, but we are working on it!
+> Luego nos dirigimos a la carpeta creada
 
-## Repository Management
+```
+  > cd crud-php-ci4/
+```
+> Ejecutamos el servidor para ver nuestra pagina en funcionamiento ( Por defecto se levanta en la url http://localhost:8080 )
 
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+```
+  > php spark serve
+```
 
-This repository is a "distribution" one, built by our release preparation script. 
-Problems with it can be raised on our forum, or as issues in the main repository.
 
-## Contributing
+### Crear Base de datos
 
-We welcome contributions from the community.
+> Luego de ver nuestra pagina en funcionamiento y  ver la pagina de Bienvenida de CodeIgniter 4 Framework, debemos crear la base de datos en MySql, cuyo nombre debe ser **crud-blog** 
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/contributing.md) section in the development repository.
+> **NOTA:** si se desea cambiar el nombre de la base de datos se debe configurar en el archivo **.env** y buscar la seccion de **DATABASE** en la Linea 49 y modificar la linea **database.default.database = crud-blog** cambiando el nombre **crud-blog** por el que se desea
 
-## Server Requirements
 
-PHP version 7.2 or higher is required, with the following extensions installed: 
+### Crear Tabla blogs
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+> Para crear la tabal de blogs nos dirigimos a PhpMyAdmin, seleccionamos nuestra base de datos y en las opciones que tenemos escogemos **SQL** y copiamos el código a continuación 
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+```
+CREATE TABLE `blogs` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `clave` varchar(20) NOT NULL,
+  `fecha` date NOT NULL,
+  `contenido` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
 
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+> Luego las siguientes lineas una por una
+
+```
+ALTER TABLE `blogs` ADD PRIMARY KEY (`id`);
+```
+
+```
+ALTER TABLE `blogs` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+COMMIT;
+```
+
+>**NOTA:** Si se desea, se puede realizar todos estos pasos a Manualmente con la Interfaz grafica de PhpMyAdmin, sin obviar ningún detalle 
+
+
+### Poner en funcionamiento
+
+>Por ultimo ahora solo se debe asegurar de que todos los cambios realizados se hayan guardado satisfactoriamente, bajamos el servidor con **CTRL+C** y lo volvemos a subir con la linea **php spark serve**, cuando el servidor se haya levantado solo debemos ir a la siguien url **http://localhost:8080/blogs** y listo!!
+
+
+
+
+
+```
+                            ************************************************
+                            ************************************************
+                            *****************<Deko-Dev/>********************
+                            ***********Deyser Andres Orozco Yepes***********
+                            *******Todos los derechos Reservados - 2020*****   
+                            ************************************************
+                            ************************************************
+```
