@@ -8,7 +8,7 @@
     <div class="container">
         
         <!-- Formulario para recolectar la información del Blog -->
-        <form action="/blogs/crear" class="form-group" method="post">
+        <form action="/blogs/editado/<?= esc($blog['id']) ?>" class="form-group" method="post">
 
             <!-- Input Id -->
             <div class="row mb-4" >
@@ -16,7 +16,7 @@
                     Id:
                 </label>
                 <div class="col-6">
-                    <input type="text" class="form-control" name="titulo" disabled>
+                    <input type="text" class="form-control" value="<?= esc($blog['id']) ?>" name="titulo" disabled>
                 </div>
             </div> 
 
@@ -26,7 +26,7 @@
                     Titulo:
                 </label>
                 <div class="col-6">
-                    <input type="text" class="form-control" name="titulo">
+                    <input type="text" class="form-control" value="<?= esc($blog['titulo']) ?>" name="titulo">
                 </div>
             </div>
     
@@ -36,7 +36,7 @@
                     Clave:
                 </label>
                 <div class="col-6">
-                    <input type="text" class="form-control" name="clave">
+                    <input type="text" class="form-control" value="<?= esc($blog['clave']) ?>" name="clave">
                 </div>
             </div>
     
@@ -46,7 +46,7 @@
                     Fecha:
                 </label>
                 <div class="col-6">
-                    <input type="date" class="form-control" name="fecha">
+                    <input type="date" class="form-control" value="<?= esc($blog['fecha']) ?>" name="fecha">
                 </div>
             </div>
     
@@ -56,7 +56,7 @@
                     Contenido:
                 </label>
                 <div class="col-6">
-                    <textarea name="contenido" id="" cols="60" rows="10"></textarea>
+                    <textarea name="contenido" id="" cols="60" rows="10"><?= esc($blog['contenido']) ?></textarea>
                 </div>
             </div>
     

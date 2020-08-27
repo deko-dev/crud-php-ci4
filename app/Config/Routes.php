@@ -32,7 +32,11 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('blogs', 'Blogs::index');
-$routes->match(['get', 'post'], 'blogs/create', 'Blogs::crear');
+$routes->match(['get', 'post'], 'blogs/crear', 'Blogs::crear');
+$routes->match(['get', 'post'], 'blogs/editar/(:id)', 'Blogs::editar/$1');
+$routes->get('blogs/borrar/(:id)', 'Blogs::borrar/$1');
+
+
 
 
 /**

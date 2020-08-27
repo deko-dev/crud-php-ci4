@@ -6,9 +6,9 @@
         </div>
 
         <div class="col-4">
-            <button class="btn btn-outline-primary">
+            <a href="/blogs/crear" class="btn btn-outline-primary">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
+            </a>
         </div>
 
     </div>
@@ -37,11 +37,11 @@
         
                         <p class="card-text"><?= esc($blog['contenido'] ) ?></p> <!-- Contenido del Blog -->
         
-                        <a class="btn btn-primary"  href="/blogs/<?= esc($blog['clave'], 'url' ) ?>" class="card-link">
+                        <a class="btn btn-primary"  href="/blogs/editar/<?= esc($blog['id'], 'url' ) ?>" class="card-link">
                             <i class="fas fa-edit"></i>
                         </a> <!-- Link para Leer el Blog completo -->
         
-                        <a class="btn btn-danger"  href="/blogs/<?= esc($blog['clave'], 'url' ) ?>" class="card-link">
+                        <a class="btn btn-danger"  href="/blogs/borrar/<?= esc($blog['id'], 'url' ) ?>" class="card-link">
                             <i class="fas fa-trash-alt"></i>    
                         </a> <!-- Link para Leer el Blog completo -->
         

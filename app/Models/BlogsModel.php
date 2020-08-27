@@ -13,10 +13,10 @@ class BlogsModel extends Model {
     protected $allowedFields = ['titulo', 'clave', 'fecha', 'contenido'];
 
     // Creamos el Método para obtener los Blogs desde nuestra Database
-    public function getBlogs($clave = false){
+    public function getBlogs($id = false){
 
         // Evaluamos si el usuario desea ver todos los Blogs o uno solo
-        if( $clave === false ) {
+        if( $id === false ) {
 
             return $this->findAll();
 
@@ -24,16 +24,8 @@ class BlogsModel extends Model {
 
         // En caso de querer un Solo Blog
         return $this->asArray()
-                    ->while(['clave' => $clave])
+                    ->where(['id' => $id])
                     ->first();            
-
-    }
-
-    // Método para eliminar un blog
-    public function deleteBlog() {
-
-        // $this->dele
-
 
     }
 
